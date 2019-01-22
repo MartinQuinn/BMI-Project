@@ -1,5 +1,6 @@
 from django import forms
-from core.models import BmiMeasurement
+from bmi.models import BmiMeasurement
+import datetime
 
 class BmiForm(forms.Form):
     """
@@ -13,4 +14,4 @@ class BmiForm(forms.Form):
 class BmiMeasurementForm(forms.ModelForm):
     class Meta:
         model = BmiMeasurement
-        fields = ["id", "height_in_meters", "weight_in_kg", "measured_at"]
+        fields = ["id", "height_in_meters", "weight_in_kg"]

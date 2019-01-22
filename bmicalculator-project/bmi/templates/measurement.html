@@ -1,10 +1,17 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<h1>
+<h3>
   Calculate Your BMI
-</h1>
+</h3>
+
+<br>
 
 {% if bmi %}
 <h2>
@@ -16,7 +23,7 @@
 <form action="." method="POST">
   {% csrf_token %}
   {{form.as_p}}
-  <input type="submit" value="Save Measurement" />
+  <input class="btn btn-primary" type="submit" value="Save Measurement" />
 </form>
 
 {% endblock %}

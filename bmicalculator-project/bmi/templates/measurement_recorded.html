@@ -1,14 +1,18 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <h3>
   BMI Saved
 </h3>
 
 <p>
-  <a href="/measurement/">
-    Save a new measurement
+  <a href="/measurement/"><button type="button" class="btn btn-primary">Save a new measurement</button>
   </a>
 </p>
 
@@ -20,7 +24,6 @@
       <th>Weight</th>
       <th>BMI</th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   {% for measurement in measurements %}
@@ -29,7 +32,7 @@
     <td>{{ measurement.height_in_meters }}</td>
     <td>{{ measurement.weight_in_kg }}</td>
     <td>{{ measurement.bmi }}</td>
-    <td><a href="{% url 'delete_measurement' id=measurement.id %}">Details</a></td>
+    <!-- <td><a href="{% url 'delete_measurement' id=measurement.id %}">Details</a></td> -->
     <td class="text-center">
       <form action="/measurements/{{measurement.id}}/" method="post">
 		    {% csrf_token %}
