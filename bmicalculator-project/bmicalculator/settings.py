@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'bmicalculator.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bmidb',
+        'USER': 'postgres',
+        'PASSWORD': 'Stsennevrz6r8y',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

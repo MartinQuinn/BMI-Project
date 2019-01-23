@@ -25,7 +25,7 @@ def bmi(request):
         if form.is_valid():
             height = form.cleaned_data["height"]
             weight = form.cleaned_data["weight"]
-            bmi = weight/height*2
+            bmi = (weight/height*2)
             return render(request, "bmi.html", {"form": form, "bmi": bmi})
     else:
         form = BmiForm()
