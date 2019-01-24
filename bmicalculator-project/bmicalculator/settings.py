@@ -25,7 +25,7 @@ SECRET_KEY = '874m7ky=7wb$l@fbyd7$g-+34to6-=2e3rk^^upj$qo&=!cx-t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['68.183.32.33','bmindex.info']
 
 
 # Application definition
