@@ -32,23 +32,39 @@
         <th scope="col"></th>
       </tr>
     </thead>
-    {% for measurement in measurements %}
-    <tr>
-      <td>{{ measurement.name }}</td>
-      <td>{{ measurement.measured_at }}</td>
-      <td>{{ measurement.height_in_centimeters }}</td>
-      <td>{{ measurement.weight_in_kg }}</td>
-      <td>{{ measurement.bmi }}</td>
-      <td class="text-center">
-        <form action="/measurements/{{measurement.id}}/" method="post">
-  		    {% csrf_token %}
-  				<input type="hidden" name="id" value="{{measurement.id}}"/>
-  			  <input type="submit" class="btn btn-sm btn-outline-secondary btn-block" value="Delete">
-  			</form>
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
-</div>
+  {% for measurement in measurements_pages %}
+  <tr>
+    <td>{{ measurement.name }}</td>
+    <td>{{ measurement.measured_at }}</td>
+    <td>{{ measurement.height_in_centimeters }}</td>
+    <td>{{ measurement.weight_in_kg }}</td>
+    <td>{{ measurement.bmi }}</td>
+    <td class="text-center">
+      <form action="/measurements/{{measurement.id}}/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{measurement.id}}"/>
+        <input type="submit" class="btn btn-sm btn-outline-secondary btn-block" value="Delete">
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+
+  <div class="pagination">
+      <span class="step-links">
+          {% if contacts.has_previous %}
+              <a href="?page=1">&laquo; first</a>
+              <a href="?page={{ measurements_pages.previous_page_number }}">previous</a>
+          {% endif %}
+
+          <span class="current">
+              Page {{ measurements_pages.number }} of {{ measurements_pages.paginator.num_pages }}.
+          </span>
+
+          {% if measurements_pages.has_next %}
+              <a href="?page={{ measurements_pages.next_page_number }}">next</a>
+              <a href="?page={{ measurements_pages.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+      </span>
+  </div>
 
 {% endblock %}

@@ -6,6 +6,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse
 from bmi.forms import BmiForm, BmiMeasurementForm
 from bmi.models import BmiMeasurement
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -19,8 +20,11 @@ def measurement(request, id):
         return redirect(reverse("all_measurements"))
 
 def measurements(request):
-    measurements = BmiMeasurement.objects.order_by("measured_at").all()
-    return render(request, "measurements.html", {"measurements": measurements})
+    measurements = BmiMeasurement.objects.order_by("-measured_at").all()
+    paginator = Paginator(measurements, 15)
+    page = request.GET.get('page')
+    mesurements_pages = paginator.get_page(page)
+    return render(request, "measurements.html", {"measurements": mesurements_pages})
 
 def bmi(request):
     if request.method == "POST":
@@ -39,9 +43,15 @@ def bmi_measurement(request):
         form = BmiMeasurementForm(request.POST)
         if form.is_valid():
             measurement = form.save()
-            measurements = BmiMeasurement.objects.order_by("measured_at").all()
-            return render(request, "measurement_recorded.html", {"measurements": measurements})
+            measurements = BmiMeasurement.objects.order_by("-measured_at").all()
+            paginator = Paginator(measurements, 15)
+            page = request.GET.get('page')
+            mesurements_pages = paginator.get_page(page)
+            return render(request, "measurement_recorded.html", {"measurements": measurements_pages})
     else:
-        measurements = BmiMeasurement.objects.order_by("measured_at").all()
+        measurements = BmiMeasurement.objects.order_by("-measured_at").all()
+        paginator = Paginator(measurements, 15)
+        page = request.GET.get('page')
+        mesurements_pages = paginator.get_page(page)
         form = BmiMeasurementForm()
-    return render(request, "measurement.html", {"form": form, "measurements": measurements})
+    return render(request, "measurement.html", {"form": form, "measurements": measurements_pages})
