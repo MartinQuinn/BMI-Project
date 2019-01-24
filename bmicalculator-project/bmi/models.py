@@ -3,7 +3,7 @@ from datetime import datetime
 # Create your models here.
 
 class BmiMeasurement(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=255)
     height_in_meters = models.FloatField()
     weight_in_kg = models.FloatField()
     measured_at = models.DateTimeField('date created', default=datetime.now)
