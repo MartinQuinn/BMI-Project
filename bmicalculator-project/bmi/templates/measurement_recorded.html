@@ -19,16 +19,17 @@
   <a href="/measurement/"><button type="button" class="btn btn-primary">Save a new measurement</button>
   </a>
 </p>
-<div class=table-responsive-sm">
-  <table width=100%; margin=auto; class="table-responsive table-bordered table-hover table-sm">
+
+<div class="table-responsive-sm">
+  <table class="table table-hover">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Height</th>
-        <th>Weight</th>
-        <th>BMI</th>
-        <th></th>
+        <th scope="col">Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Height</th>
+        <th scope="col">Weight</th>
+        <th scope="col">BMI</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     {% for measurement in measurements %}
