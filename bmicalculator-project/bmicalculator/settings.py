@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+# Martin Quinn 24-01-2019
+# PTA18070
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
