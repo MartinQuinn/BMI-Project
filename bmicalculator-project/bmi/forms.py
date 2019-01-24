@@ -8,10 +8,10 @@ class BmiForm(forms.Form):
     weight is in kg
     """
     name = forms.CharField(required=False)
-    height = forms.FloatField(label="Height in meters:", required=True, min_value=0)
+    height = forms.FloatField(label="Height in centimeters:", required=True, min_value=0)
     weight = forms.FloatField(label="Weight in kg:", required=True, min_value=0)
 
 class BmiMeasurementForm(forms.ModelForm):
     class Meta:
         model = BmiMeasurement
-        fields = ["id", "height_in_meters", "weight_in_kg"]
+        fields = ["id", "name", "height_in_meters", "weight_in_kg"]

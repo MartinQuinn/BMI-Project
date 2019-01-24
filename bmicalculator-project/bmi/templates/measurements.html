@@ -20,6 +20,7 @@
   <table class="table-responsive table-bordered table-hover table-sm">
     <thead>
       <tr>
+        <th>Name</th>
         <th>Date</th>
         <th>Height</th>
         <th>Weight</th>
@@ -29,6 +30,7 @@
     </thead>
     {% for measurement in measurements %}
     <tr>
+      <td>{{ measurement.name }}</td>
       <td>{{ measurement.measured_at }}</td>
       <td>{{ measurement.height_in_meters }}</td>
       <td>{{ measurement.weight_in_kg }}</td>
